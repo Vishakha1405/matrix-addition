@@ -1,0 +1,93 @@
+public class MatOper {
+	public static void main(String[] args) 
+	{
+		DataInputStream in= new DataInputStream(System.in);
+		int a[][]=null;
+		int b[][]=null;
+		int c[][]=null;
+		int i,j,k,r1,c1,r2,c2,ch;
+		try
+		{
+ 
+			System.out.println("\nEnter the number of rows and columns of the 
+1st matrix :");
+			r1=Integer.parseInt(in.readLine());
+			c1=Integer.parseInt(in.readLine());
+			a=new int[r1][c1];
+			System.out.println("\nEnter the elements of the 2st matrix");
+			for(i=0;i<r1;i++)
+				for(j=0;j<c1;j++)
+						a[i][j]=Integer.parseInt(in.readLine());
+			System.out.println("\nEnter the number of rows and columns of the
+2nd matrix :");		
+			r2=Integer.parseInt(in.readLine());
+			c2=Integer.parseInt(in.readLine());
+			System.out.println("\nEnter the elements of the 2nd matrix");
+			b=new int[r2][c2];
+			for(i=0;i<r2;i++)
+				for(j=0;j<c2;j++)
+					b[i][j]=Integer.parseInt(in.readLine());
+			System.out.println("\nThe 1st matrix is:");
+			for(i=0;i<r1;i++)
+			{
+				for(j=0;j<c1;j++)
+					System.out.print(a[i][j]+" ");
+				System.out.print("\n");
+			}
+			System.out.println("\nThe 2nd matrix is:");	
+			for(i=0;i<r2;i++)
+			{
+				for(j=0;j<c2;j++)
+					System.out.print(b[i][j]+" ");
+				System.out.print("\n");
+			}	
+			System.out.println("\n1.Addition \n2.Multiplication");
+			System.out.println("\nEnter the operation you want to perform :");
+			ch=Integer.parseInt(in.readLine());
+			if(ch==1)
+			{
+				if(r1==r2&&c1==c2)
+				{   
+					c=new int [r1][c1];
+					System.out.println("\nSum of the matrices :");
+					for(i=0;i<r1;i++)
+					{
+						System.out.print("\n");
+						for(j=0;j<c1;j++)
+						{
+							c[i][j]=a[i][j]+b[i][j];
+							System.out.print(c[i][j]+" ");
+						}
+					}
+				}
+				else
+					System.out.println("Addition not possible!!!");
+			}
+			else if(ch==2)
+			{
+				if(c1==r2)
+				{   
+					c=new int [r1][c2];
+					System.out.println("Product of the matrices :");
+					for(i=0;i<r1;i++)
+					{
+						for(j=0;j<c2;j++)
+						{
+							c[i][j]=0;
+							for(k=0;k<c1;k++)
+								c[i][j]=c[i][j]+a[i][k]*b[k][j];
+							System.out.print(c[i][j]+" ");
+						}
+						System.out.print("\n");
+					}  
+				}
+			   	else
+			   		System.out.println("Multiplication not possible!!!!");
+			}		
+			else
+				System.out.println("Invalid option!!!"); 		
+		}
+		catch(Exception e)
+		{ 
+			System.out.println("Error : "+e);
+		}
